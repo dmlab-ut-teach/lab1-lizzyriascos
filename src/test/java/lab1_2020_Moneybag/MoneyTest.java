@@ -50,9 +50,9 @@ public class MoneyTest {
         @Test
         public void testBagSimpleAdd() {
                 // {[12 CHF][7 USD]} + [14 CHF] == {[26 CHF][7 USD]}
-                Money bag[]= {};
+                Money bag[]= {f12CHF, f7USD, f14CHF};
                 MoneyBag expected= new MoneyBag(bag);
-                assertThat(expected, is(fMB1.add(f14CHF)));
+                assertThat(expected, is(fMB1.add(f14CHF))); //
         }
         
         @Test
@@ -76,13 +76,13 @@ public class MoneyTest {
                 assertThat(fMB1.subtract(fMB1).isZero(), is(true)); 
 
                 Money bag[] = { new Money (0, "CHF"), new Money (1, "USD") };
-                assertThat(new MoneyBag(bag).isZero(), is(true));
+                assertThat(new MoneyBag(bag).isZero(), is(false));
         }
         
         @Test
         public void testMixedSimpleAdd() {
                 // [12 CHF] + [7 USD] == {[12 CHF][7 USD]}
-                Money bag[]= { f12CHF, f7USD };
+                Money bag[]= { f12CHF, f7USD};
                 MoneyBag expected= new MoneyBag(bag);
                 assertThat(expected, is(f12CHF.add(f7USD)));
         }
@@ -117,12 +117,12 @@ public class MoneyTest {
         
         @Test
         public void testMoneyChangeCurrency() {
-        	// Complete this test based on your codebase       
-                
-                
+        	// Complete this test based on your codebase      
+        	Money SomeMoney = new Money (12, "CHF");
+        	SomeMoney.changeCurrency("USD");
                 
         	// Change this assert function based on test requirements
-        	assertThat(true, is(false));
+        	assertThat(SomeMoney.currency().equals("USD"), is(true));
         }
         
         @Test

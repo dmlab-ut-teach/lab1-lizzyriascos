@@ -37,6 +37,9 @@ public class Money implements IMoney {
         public String currency() {
                 return fCurrency;
         }
+        public void changeCurrency(String currency) {
+        	fCurrency = currency;
+        }
         public boolean equals(Object anObject) {
                 if (isZero()) 
                         if (anObject instanceof IMoney)
